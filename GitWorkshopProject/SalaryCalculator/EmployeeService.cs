@@ -15,20 +15,36 @@ namespace SalaryCalculator
 
             decimal factor = 0;
 
-            if (employeeType == EmployeeType.Engineer)
+//             if (employeeType == EmployeeType.Engineer)
+//             {
+//                 factor = 1;
+//             }
+//             else if (employeeType == EmployeeType.SeniorEngineer || employeeType == EmployeeType.Manager)
+//             {
+//                 factor = 1.5m;
+//             }
+//             else if (employeeType == EmployeeType.SeniorManager || employeeType == EmployeeType.Expert)
+//             {
+//                 factor = 3;
+//             }
+//             // TODO: if employee is Expert, set factor = 3
+            
+            switch(EmployeeType)
             {
-                factor = 1;
+                case Engineer:
+                    factor = 1;
+                    break;
+                    
+                case SeniorEngineer:
+                case Manager:
+                    factor = 1.5;
+                    break;
+                    
+                case SeniorManager:
+                case Expert:
+                    factor = 3;
+                    break;
             }
-            else if (employeeType == EmployeeType.SeniorEngineer || employeeType == EmployeeType.Manager)
-            {
-                factor = 2m;
-            }
-            else if (employeeType == EmployeeType.SeniorManager)
-            {
-                factor = 3;
-            }
-            // TODO: if employee is Expert, set factor = 3
-
             var salary = BASIC_SALARY * years * factor;
 
             return salary;
